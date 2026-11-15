@@ -1,411 +1,399 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medhaj Dubey, Software Engineer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                    colors: {
-                        bg: '#09090b',
-                        surface: '#18181b',
-                        'surface-hover': '#1f1f23',
-                        border: '#27272a',
-                        'border-hover': '#3f3f46',
-                        muted: '#a1a1aa',
-                        'muted-dim': '#71717a',
-                        accent: '#6366f1',
-                        'accent-soft': '#818cf8',
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.8s ease-out forwards',
-                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { background: #09090b; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medhaj Dubey, Engineering Notebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#16151A; --ink:#ECE8E1; --ink-dim:#9C968C; --ink-faint:#8A837A;
+  --rule:rgba(236,232,225,.09); --rule-firm:rgba(236,232,225,.16);
+  --ochre:#C8A062; --ochre-dim:rgba(200,160,98,.45);
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --serif:'Newsreader',Georgia,serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --col:minmax(0,35rem); --margin-col:13rem; --gap:3rem;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);
+  font-size:1.0625rem;line-height:1.65;font-weight:350;
+  -webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:72rem;margin:0 auto;padding-inline:clamp(1.25rem,4vw,3.5rem)}
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+/* ---- masthead ---- */
+.masthead{border-bottom:1px solid var(--rule-firm);padding-block:1.1rem;
+  position:sticky;top:0;background:rgba(22,21,26,.86);backdrop-filter:blur(10px);z-index:20}
+.masthead .wrap{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+.mh-name{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
+.mh-nav{display:flex;gap:1.6rem;font-family:var(--mono);font-size:.72rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim)}
+.mh-nav a{text-decoration:none}
+.mh-nav a:hover{color:var(--ochre)}
 
-        .hero-gradient {
-            background: radial-gradient(ellipse 60% 50% at 50% -10%, rgba(99, 102, 241, 0.12) 0%, transparent 60%);
-        }
+/* ---- opening ---- */
+.opening{padding-block:clamp(4rem,11vw,8.5rem) clamp(3rem,7vw,5rem);
+  border-bottom:1px solid var(--rule)}
+.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ochre);margin:0 0 2.2rem}
+.kicker span{color:var(--ink-faint)}
+.opening h1{font-family:var(--display);font-weight:700;
+  font-size:clamp(2.9rem,9vw,6.4rem);line-height:.94;letter-spacing:-.03em;
+  margin:0 0 2rem;font-stretch:88%}
+.thesis{font-size:clamp(1.2rem,2.3vw,1.6rem);line-height:1.45;max-width:34rem;
+  margin:0 0 2.6rem;font-weight:350}
+.thesis em{font-style:italic;color:var(--ochre)}
+.standfirst{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));
+  gap:1.6rem 2.5rem;border-top:1px solid var(--rule);padding-top:1.6rem;max-width:52rem}
+.sf-item{font-family:var(--mono);font-size:.74rem;line-height:1.55;color:var(--ink-dim)}
+.sf-item b{display:block;color:var(--ink-faint);font-weight:400;
+  letter-spacing:.12em;text-transform:uppercase;font-size:.72rem;margin-bottom:.45rem}
+.sf-item a{color:var(--ink-dim);text-decoration:none;border-bottom:1px solid var(--rule-firm)}
+.sf-item a:hover{color:var(--ochre);border-color:var(--ochre-dim)}
 
-        .name-gradient {
-            background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+/* ---- work entries ---- */
+.work-entry{padding-block:clamp(2.5rem,5vw,3.6rem);border-top:1px solid var(--rule)}
+.work-entry:first-of-type{border-top:0;padding-top:0}
+.e-head{display:flex;align-items:baseline;gap:.9rem;margin-bottom:.4rem;flex-wrap:wrap}
+.e-num{font-family:var(--mono);font-size:.78rem;color:var(--ochre)}
+.e-head h3{font-family:var(--display);font-weight:600;font-size:clamp(1.3rem,2.6vw,1.75rem);
+  letter-spacing:-.015em;margin:0;font-stretch:92%}
+.e-kind{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint)}
+.e-meta{font-family:var(--mono);font-size:.74rem;color:var(--ink-faint);
+  margin:0 0 1.4rem;letter-spacing:.02em}
+.e-meta a{color:var(--ink-dim);text-decoration:none;border-bottom:1px solid var(--rule-firm)}
+.e-meta a:hover{color:var(--ochre);border-color:var(--ochre-dim)}
+.work-entry p{margin:0 0 1.1rem}
+.stat{display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem 1.8rem;
+  border-block:1px solid var(--rule);padding-block:1.1rem;margin:1.5rem 0 .8rem}
+.stat b{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,4vw,2.6rem);
+  letter-spacing:-.03em;line-height:1;font-stretch:88%}
+.stat span{font-family:var(--mono);font-size:.74rem;color:var(--ink-dim)}
+.stat-cond{font-family:var(--mono);font-size:.74rem;color:var(--ink-faint);
+  line-height:1.6;margin:0 0 1.4rem}
+figure{margin:1.8rem 0 0}
+.fig-cap{font-family:var(--mono);font-size:.74rem;color:var(--ink-faint);
+  margin-top:.7rem;line-height:1.6}
+.fig-cap b{color:var(--ochre);font-weight:400}
+svg{max-width:100%;height:auto;display:block}
+.svg-l{font-family:var(--mono);font-size:10px;fill:#A8A299}
+.svg-t{font-family:var(--mono);font-size:10.5px;fill:#ECE8E1}
+.svg-a{font-family:var(--mono);font-size:9px;fill:#C8A062}
+.box{fill:none;stroke:rgba(236,232,225,.22)}
+.flow{stroke:rgba(236,232,225,.3);fill:none}
+.tags{font-family:var(--mono);font-size:.68rem;color:var(--ink-faint);margin-top:1.5rem}
 
-        .card {
-            background: #18181b;
-            border: 1px solid #27272a;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card:hover {
-            border-color: #3f3f46;
-            background: #1f1f23;
-            box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.05), 0 8px 40px -12px rgba(0, 0, 0, 0.4);
-        }
+/* ---- history log ---- */
+.log-entry{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:2rem;
+  padding-block:1.9rem;border-top:1px solid var(--rule)}
+.log-entry:first-of-type{border-top:0}
+.log-date{font-family:var(--mono);font-size:.72rem;color:var(--ochre);line-height:1.7;
+  letter-spacing:.02em}
+.log-date span{display:block;color:var(--ink-faint)}
+.log-body h4{font-family:var(--display);font-weight:600;font-size:1.08rem;margin:0 0 .15rem;
+  letter-spacing:-.01em}
+.log-org{font-family:var(--mono);font-size:.74rem;color:var(--ink-dim);
+  letter-spacing:.06em;text-transform:uppercase;margin:0 0 .8rem}
+.log-body p{margin:0 0 .9rem}
+.pub{border-left:2px solid var(--ochre-dim);padding-left:1.4rem;max-width:44rem}
+.pub cite{font-style:italic;color:var(--ink-dim)}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));
+  gap:2rem;margin-top:2rem;max-width:52rem}
+.contact-grid a{font-family:var(--mono);font-size:.82rem;text-decoration:none;
+  border-bottom:1px solid var(--rule-firm);padding-bottom:.2rem}
+.contact-grid a:hover{color:var(--ochre);border-color:var(--ochre-dim)}
+.colophon{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);
+  padding-block:2.5rem 4rem;line-height:1.8}
+@media (max-width:640px){.log-entry{grid-template-columns:1fr;gap:.6rem}}
+@media (max-width:560px){
+  .masthead .wrap{flex-wrap:wrap;gap:.45rem 1.1rem}
+  .mh-nav{gap:1.1rem}
+}
 
-        .tag {
-            background: rgba(99, 102, 241, 0.08);
-            border: 1px solid rgba(99, 102, 241, 0.15);
-            color: #a5b4fc;
-        }
+/* ---- section scaffolding ---- */
+.section{padding-block:clamp(3.5rem,8vw,6rem);border-bottom:1px solid var(--rule)}
+.sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:3rem}
+.sec-num{font-family:var(--mono);font-size:.74rem;color:var(--ochre);letter-spacing:.1em}
+.sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,3vw,2.1rem);
+  letter-spacing:-.015em;margin:0;font-stretch:90%}
+.sec-rule{flex:1;height:1px;background:var(--rule-firm)}
 
-        .btn-primary {
-            background: #6366f1;
-            color: white;
-            transition: all 0.2s ease;
-        }
-        .btn-primary:hover {
-            background: #4f46e5;
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
-        }
+/* ---- annotated grid: main column + margin column ---- */
+.entry{display:grid;grid-template-columns:var(--col) var(--margin-col);
+  gap:var(--gap);align-items:start}
+.note{font-family:var(--mono);font-size:.78rem;line-height:1.6;color:var(--ink-faint);
+  border-left:1px solid var(--ochre-dim);padding-left:.85rem}
+.note::before{content:"↳ ";color:var(--ochre)}
 
-        .btn-ghost {
-            border: 1px solid #27272a;
-            color: #e4e4e7;
-            transition: all 0.2s ease;
-        }
-        .btn-ghost:hover {
-            border-color: #6366f1;
-            background: rgba(99, 102, 241, 0.05);
-        }
+@media (max-width:900px){
+  .entry{grid-template-columns:1fr;gap:1.5rem}
+  .note{margin-left:1rem;font-size:.75rem}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
-        .section-fade {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .section-fade.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .dot-pattern {
-            background-image: radial-gradient(circle, #27272a 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
-    </style>
+/* ---- print: the notebook on paper ---- */
+@media print{
+  :root{--bg:#fff;--ink:#111;--ink-dim:#444;--ink-faint:#555;
+    --rule:rgba(0,0,0,.18);--rule-firm:rgba(0,0,0,.35);
+    --ochre:#7A5A14;--ochre-dim:rgba(122,90,20,.5)}
+  body{font-size:10.5pt;line-height:1.45}
+  .masthead{position:static;background:none;border-bottom:1px solid var(--rule-firm)}
+  .mh-nav{display:none}
+  .opening{padding-block:1.5rem 1rem}
+  .opening h1{font-size:32pt}
+  .thesis{font-size:13pt}
+  .section{padding-block:1.2rem;break-inside:avoid}
+  .work-entry,.log-entry,figure{break-inside:avoid}
+  .svg-l{fill:#555}.svg-t{fill:#111}.svg-a{fill:#7A5A14}
+  .box{stroke:rgba(0,0,0,.45)}.flow{stroke:rgba(0,0,0,.5)}
+  rect[fill="rgba(236,232,225,.16)"]{fill:rgba(0,0,0,.18)}
+  .e-meta a::after,.contact-grid a::after{content:" (" attr(href) ")";
+    font-size:8pt;color:#666;word-break:break-all}
+  .e-meta a,.contact-grid a{border-bottom:0}
+  .colophon{border-top:1px solid var(--rule);margin-top:1rem}
+}
+</style>
 </head>
-<body class="font-sans text-white antialiased">
+<body>
 
-    <!-- Nav -->
-    <nav class="fixed top-0 w-full z-50 bg-bg/70 backdrop-blur-xl border-b border-border/50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex justify-between items-center">
-            <a href="#" class="font-bold text-base tracking-tight">medhaj<span class="text-accent">.</span></a>
-            <div class="flex items-center gap-0.5 sm:gap-1">
-                <a href="#projects" class="px-2 sm:px-3 py-1.5 text-xs sm:text-sm text-muted hover:text-white rounded-md hover:bg-surface transition-all">Projects</a>
-                <a href="#experience" class="px-2 sm:px-3 py-1.5 text-xs sm:text-sm text-muted hover:text-white rounded-md hover:bg-surface transition-all">Experience</a>
-                <a href="#contact" class="px-2 sm:px-3 py-1.5 text-xs sm:text-sm text-muted hover:text-white rounded-md hover:bg-surface transition-all hidden sm:block">Contact</a>
-                <a href="./assets/Medhaj_Dubey_CV.pdf" target="_blank" class="ml-1 sm:ml-2 px-2.5 sm:px-3.5 py-1.5 text-xs sm:text-sm font-medium rounded-md btn-ghost">Resume</a>
-            </div>
-        </div>
+<header class="masthead">
+  <div class="wrap">
+    <div class="mh-name">Medhaj&nbsp;Dubey</div>
+    <nav class="mh-nav">
+      <a href="#work">Work</a><a href="#history">History</a><a href="#contact">Contact</a>
+      <a href="assets/Medhaj_Dubey_CV.pdf">CV</a>
     </nav>
+  </div>
+</header>
 
-    <!-- Hero -->
-    <section class="relative min-h-[55vh] flex items-center justify-center px-4 sm:px-6 hero-gradient">
-        <div class="max-w-2xl text-center pt-14">
-            <div class="animate-fade-in">
-                <p class="text-xs sm:text-sm font-medium text-accent mb-4 tracking-wide uppercase">Software Engineer</p>
-                <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold name-gradient mb-5 tracking-tight leading-[1.1]">Medhaj Dubey</h1>
-                <p class="text-base sm:text-lg text-muted max-w-xl mx-auto mb-3 leading-relaxed px-2">
-                    I build infrastructure that makes system behaviour measurable. Distributed tracing
-                    for LLM agents, a key-value store written and benchmarked from scratch, and model
-                    compression with the accuracy cost stated.
-                </p>
-                <p class="text-xs sm:text-sm text-muted-dim mb-8 px-2">
-                    B.Tech CS (Minor: Computational Mathematics) · Manipal Institute of Technology · 2026
-                </p>
-            </div>
-            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 animate-fade-in px-2" style="animation-delay: 0.2s; opacity: 0;">
-                <a href="https://github.com/Medhaj-ops" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg btn-ghost text-sm font-medium">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    GitHub
-                </a>
-                <a href="https://www.linkedin.com/in/medhaj-dubey-272357296/" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg btn-ghost text-sm font-medium">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    LinkedIn
-                </a>
-                <a href="mailto:dubeymedhaj10@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg btn-ghost text-sm font-medium">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                    Email
-                </a>
-                <a href="./assets/Medhaj_Dubey_CV.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg btn-primary text-sm font-medium">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                    Resume
-                </a>
-            </div>
+<section class="opening">
+  <div class="wrap">
+    <p class="kicker">Engineering Notebook <span>/ Systems &amp; AI Infrastructure / 2026</span></p>
+    <h1>Medhaj<br>Dubey</h1>
+    <p class="thesis">I build infrastructure that makes system behaviour <em>measurable</em>.
+      Tracing for agent systems that are otherwise opaque, a key&#8209;value store benchmarked
+      from scratch, and model compression with its cost stated.</p>
+    <div class="standfirst">
+      <div class="sf-item"><b>Currently</b>Research Intern, remote<br>IIT Indore</div>
+      <div class="sf-item"><b>Education</b>B.Tech CS, Manipal<br>Institute of Technology, 2026</div>
+      <div class="sf-item"><b>Based</b>India<br>Open to relocation</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">§1</span><h2>Selected Work</h2><span class="sec-rule"></span>
+    </div>
+    <div class="work-entry">
+      <div class="entry">
+        <div>
+          <div class="e-head"><span class="e-num">01</span><h3>agentlog</h3>
+            <span class="e-kind">LLM Observability</span></div>
+          <p class="e-meta">Python · OpenTelemetry · ClickHouse · Helm &nbsp;·&nbsp;
+            <a href="https://pypi.org/project/agentlog-ai/">pip install agentlog-ai</a> ·
+            <a href="https://github.com/Medhaj-ops/agentlog">Repository</a></p>
+          <p>OpenTelemetry-native observability for multi-agent LLM systems. It auto-instruments
+            OpenAI and LiteLLM by patching them at the client boundary, so a running system starts
+            emitting traces without a line of application code changing. Analytics sit on ClickHouse
+            with behavioral search and multi-trace comparison, and it ships as a production Helm
+            chart with an autoscaling collector and OAuth2 authentication.</p>
+          <figure><svg viewBox="0 0 580 132" role="img" aria-label="Instrumentation path from application code through the collector into ClickHouse">
+          <rect class="box" x="1" y="30" width="118" height="46" rx="2"/>
+          <text class="svg-t" x="14" y="50">your code</text>
+          <text class="svg-l" x="14" y="65">openai / litellm</text>
+          <path class="flow" d="M119 53 H167" stroke-width="1"/><path class="flow" d="M161 49 l6 4 -6 4"/>
+          <rect class="box" x="168" y="30" width="118" height="46" rx="2" stroke="rgba(200,160,98,.5)"/>
+          <text class="svg-t" x="181" y="50" fill="#C8A062">monkey-patch</text>
+          <text class="svg-l" x="181" y="65">interception</text>
+          <path class="flow" d="M286 53 H334" stroke-width="1"/><path class="flow" d="M328 49 l6 4 -6 4"/>
+          <rect class="box" x="335" y="30" width="110" height="46" rx="2"/>
+          <text class="svg-t" x="348" y="50">collector</text>
+          <text class="svg-l" x="348" y="65">otel, autoscaled</text>
+          <path class="flow" d="M445 53 H493" stroke-width="1"/><path class="flow" d="M487 49 l6 4 -6 4"/>
+          <rect class="box" x="494" y="30" width="84" height="46" rx="2"/>
+          <text class="svg-t" x="506" y="50">ClickHouse</text>
+          <text class="svg-l" x="506" y="65">spans</text>
+          <path class="flow" d="M227 76 V98" stroke-dasharray="2 3"/>
+          <text class="svg-a" x="183" y="112">zero application</text>
+          <text class="svg-a" x="183" y="124">code changed</text>
+        </svg>
+            <figcaption class="fig-cap"><b>Fig. 1</b> &nbsp;Instrumentation path. The patch sits
+              inside the client call, which is what makes the tracing zero-code.</figcaption>
+          </figure>
         </div>
-    </section>
+        <p class="note">Redaction is opt-in, not on by default. Silently rewriting someone's prompt
+          data seemed worse than making them ask for it.</p>
+      </div>
+    </div>
 
-    <!-- Projects -->
-    <section id="projects" class="py-20 px-6 section-fade">
-        <div class="max-w-4xl mx-auto">
-            <div class="mb-10">
-                <p class="text-sm font-medium text-accent mb-2 tracking-wide uppercase">Work</p>
-                <h2 class="text-3xl font-bold">Projects</h2>
-            </div>
-
-            <div class="grid gap-5">
-                <!-- Top row: 2 projects -->
-                <div class="grid md:grid-cols-2 gap-5">
-                    <!-- agentlog -->
-                    <div class="card rounded-2xl p-7 group">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-lg font-semibold mb-1">agentlog</h3>
-                                <p class="text-xs text-muted-dim uppercase tracking-wider font-medium">LLM Observability</p>
-                            </div>
-                            <a href="https://github.com/Medhaj-ops/agentlog" target="_blank" class="text-muted-dim hover:text-accent transition-colors p-1">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
-                        </div>
-                        <p class="text-sm text-muted leading-relaxed mb-5">
-                            OpenTelemetry-native observability for multi-agent LLM systems. It auto-instruments
-                            OpenAI and LiteLLM by monkey-patching them, so you get tracing without touching your
-                            code. Analytics run on ClickHouse, with behavioral search and multi-trace comparison,
-                            and it ships with a production Helm chart and an autoscaling collector.
-                            Published on PyPI: <code class="text-accent-soft whitespace-nowrap">pip install agentlog-ai</code>.
-                        </p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag text-xs px-2.5 py-0.5 rounded-md">Python</span>
-                            <span class="tag text-xs px-2.5 py-0.5 rounded-md">OpenTelemetry</span>
-                            <span class="tag text-xs px-2.5 py-0.5 rounded-md">ClickHouse</span>
-                            <span class="tag text-xs px-2.5 py-0.5 rounded-md">Helm</span>
-                            <span class="tag text-xs px-2.5 py-0.5 rounded-md">Docker</span>
-                        </div>
-                    </div>
-
-                    <!-- go-kv -->
-                    <div class="card rounded-2xl p-7 group">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-lg font-semibold mb-1">go-kv</h3>
-                                <p class="text-xs text-muted-dim uppercase tracking-wider font-medium">Systems Programming</p>
-                            </div>
-                            <a href="https://github.com/Medhaj-ops/go-kv" target="_blank" class="text-muted-dim hover:text-accent transition-colors p-1">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
-                        </div>
-                        <p class="text-sm text-muted leading-relaxed mb-5">
-                            A networked in-memory key-value store I wrote from scratch in Go. It speaks the Redis
-                            RESP protocol, so redis-cli works against it out of the box. Write-ahead log with
-                            fsync on every write, RWMutex concurrency, dual TTL expiry, no external dependencies.
-                            Store-level benchmarks on an Apple M4 Pro come in at 11.8M GET ops/sec, 85 ns/op,
-                            1 alloc/op. Those cover in-memory operations only, with no network in the path.
-                        </p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag text-xs px-2.5 py-0.5 rounded-md">Go</span>
-                            <span class="tag text-xs px-2.5 py-0.5 rounded-md">RESP Protocol</span>
-                            <span class="tag text-xs px-2.5 py-0.5 rounded-md">WAL</span>
-                            <span class="tag text-xs px-2.5 py-0.5 rounded-md">Concurrency</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bottom row: full width -->
-                <div class="card rounded-2xl p-7 group">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-lg font-semibold mb-1">prediction-market-analytics</h3>
-                            <p class="text-xs text-muted-dim uppercase tracking-wider font-medium">Data Engineering / Probability</p>
-                        </div>
-                        <a href="https://github.com/Medhaj-ops/prediction-market-analytics" target="_blank" class="text-muted-dim hover:text-accent transition-colors p-1">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
-                    </div>
-                    <p class="text-sm text-muted leading-relaxed mb-5 max-w-3xl">
-                        A multi-venue prediction market analytics engine. It pulls live quotes from Kalshi and
-                        Polymarket, normalises both into a shared quote type, and measures where the two venues
-                        disagree about the same contract, reporting signed spread and consensus probability over
-                        hand-verified pairs. Read-only by design, so no trading, no auth, no database. Around
-                        3,000 lines of Python and 61 tests.
-                    </p>
-                    <p class="text-sm text-muted-dim leading-relaxed mb-5 max-w-3xl border-l-2 border-border pl-4">
-                        It deliberately won't auto-match contracts across venues by keyword or date. That approach
-                        produces confident, silent, wrong signals, so every pair is curated by hand and re-verified
-                        against both APIs. When a quote fails on either venue, the pair gets counted and surfaced
-                        rather than quietly dropped.
-                    </p>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="tag text-xs px-2.5 py-0.5 rounded-md">Python</span>
-                        <span class="tag text-xs px-2.5 py-0.5 rounded-md">FastAPI</span>
-                        <span class="tag text-xs px-2.5 py-0.5 rounded-md">httpx</span>
-                        <span class="tag text-xs px-2.5 py-0.5 rounded-md">asyncio</span>
-                        <span class="tag text-xs px-2.5 py-0.5 rounded-md">pytest</span>
-                    </div>
-                </div>
-            </div>
+    <div class="work-entry">
+      <div class="entry">
+        <div>
+          <div class="e-head"><span class="e-num">02</span><h3>go-kv</h3>
+            <span class="e-kind">Systems Programming</span></div>
+          <p class="e-meta">Go · RESP protocol · write-ahead log &nbsp;·&nbsp;
+            <a href="https://github.com/Medhaj-ops/go-kv">Repository</a></p>
+          <p>A networked in-memory key-value store written from scratch in Go. It speaks the Redis
+            RESP protocol, so redis-cli works against it out of the box. Write-ahead log with fsync
+            on every write, RWMutex concurrency, dual TTL expiry, and no external dependencies.</p>
+          <div class="stat">
+            <b>11.8M</b><span>GET ops/sec</span>
+            <b>85</b><span>ns/op</span>
+            <b>1</b><span>alloc/op</span>
+          </div>
+          <p class="stat-cond">Apple M4 Pro. Store-level benchmarks: in-memory operations only,
+            with no network in the path.</p>
+          <figure><svg viewBox="0 0 580 160" role="img" aria-label="go-kv write path from RESP parse through the mutex to the write-ahead log and memory map">
+          <rect class="box" x="1" y="54" width="104" height="44" rx="2"/>
+          <text class="svg-t" x="14" y="74">RESP parse</text>
+          <text class="svg-l" x="14" y="88">redis-cli wire</text>
+          <path class="flow" d="M105 76 H153" stroke-width="1"/><path class="flow" d="M147 72 l6 4 -6 4"/>
+          <rect x="154" y="18" width="300" height="124" rx="2" fill="none"
+                stroke="rgba(200,160,98,.45)" stroke-dasharray="3 4"/>
+          <text class="svg-a" x="166" y="34">RWMutex, write lock held</text>
+          <rect class="box" x="172" y="48" width="122" height="40" rx="2"/>
+          <text class="svg-t" x="185" y="66">WAL append</text>
+          <text class="svg-l" x="185" y="80">fsync per write</text>
+          <rect class="box" x="172" y="98" width="122" height="34" rx="2"/>
+          <text class="svg-t" x="185" y="119">in-memory map</text>
+          <path class="flow" d="M294 68 H346" stroke-width="1"/><path class="flow" d="M340 64 l6 4 -6 4"/>
+          <text class="svg-l" x="352" y="64">durable before</text>
+          <text class="svg-l" x="352" y="77">acknowledged</text>
+          <path class="flow" d="M294 115 H346" stroke-width="1"/><path class="flow" d="M340 111 l6 4 -6 4"/>
+          <text class="svg-l" x="352" y="119">serves reads</text>
+          <path class="flow" d="M454 76 H512" stroke-width="1"/><path class="flow" d="M506 72 l6 4 -6 4"/>
+          <text class="svg-t" x="518" y="80">+OK</text>
+        </svg>
+            <figcaption class="fig-cap"><b>Fig. 2</b> &nbsp;Write path. The mutex boundary is where
+              the concurrency behaviour is actually decided.</figcaption>
+          </figure>
         </div>
-    </section>
+        <p class="note">fsync on every write costs 1&#8211;5ms. Batching it would be roughly ten
+          times faster and would lose a window of data on crash. I took durability.</p>
+      </div>
+    </div>
 
-    <!-- Experience -->
-    <section id="experience" class="py-16 px-6 section-fade">
-        <div class="max-w-4xl mx-auto">
-            <div class="mb-10">
-                <p class="text-sm font-medium text-accent mb-2 tracking-wide uppercase">Background</p>
-                <h2 class="text-3xl font-bold">Experience</h2>
-            </div>
-
-            <div class="space-y-4">
-                <!-- IIT Indore -->
-                <div class="card rounded-2xl p-7">
-                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
-                        <div>
-                            <h3 class="text-base font-semibold">Research Intern (Remote)</h3>
-                            <p class="text-accent-soft font-medium text-sm">IIT Indore</p>
-                        </div>
-                        <span class="text-xs text-muted-dim font-medium bg-surface px-2.5 py-1 rounded-md whitespace-nowrap">Sep 2026 to present</span>
-                    </div>
-                    <p class="text-sm text-muted leading-relaxed mt-3">
-                        I'm working on quantization for I-JEPA models, the self-supervised vision architecture,
-                        which carries on the model compression work I started at Samsung. I work remotely with a
-                        faculty supervisor, with weekly reviews.
-                    </p>
-                </div>
-                <!-- Lilly -->
-                <div class="card rounded-2xl p-7">
-                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
-                        <div>
-                            <h3 class="text-base font-semibold">Platform Engineering Intern</h3>
-                            <p class="text-accent-soft font-medium text-sm">Eli Lilly and Company</p>
-                        </div>
-                        <span class="text-xs text-muted-dim font-medium bg-surface px-2.5 py-1 rounded-md whitespace-nowrap">Jan to Jul 2026</span>
-                    </div>
-                    <p class="text-sm text-muted leading-relaxed mt-3">
-                        I built MCP protocol servers in Go that let Kubernetes deployments run autonomously through
-                        GitOps, and designed a multi-agent orchestration system on Google ADK and AWS Bedrock that
-                        went to production. I also shipped an engineering metrics dashboard that derives 16
-                        health-scored metrics from GitHub data.
-                    </p>
-                </div>
-
-                <!-- Ethan AI -->
-                <div class="card rounded-2xl p-7">
-                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
-                        <div>
-                            <h3 class="text-base font-semibold">Fintech Intern</h3>
-                            <p class="text-accent-soft font-medium text-sm">Ethan AI</p>
-                        </div>
-                        <span class="text-xs text-muted-dim font-medium bg-surface px-2.5 py-1 rounded-md whitespace-nowrap">May to Jul 2025</span>
-                    </div>
-                    <p class="text-sm text-muted leading-relaxed mt-3">
-                        I built a financial sentiment pipeline on FinBERT across 6 news sources to support mutual
-                        fund recommendations, and automated Morningstar factsheet retrieval, which replaced a
-                        manual process that took over two hours.
-                    </p>
-                </div>
-
-                <!-- Samsung -->
-                <div class="card rounded-2xl p-7">
-                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
-                        <div>
-                            <h3 class="text-base font-semibold">Research Intern</h3>
-                            <p class="text-accent-soft font-medium text-sm">Samsung R&D Institute Bangalore</p>
-                        </div>
-                        <span class="text-xs text-muted-dim font-medium bg-surface px-2.5 py-1 rounded-md whitespace-nowrap">Sep 2024 to Mar 2025</span>
-                    </div>
-                    <p class="text-sm text-muted leading-relaxed mt-3">
-                        I built a model compression pipeline using a modified BinaryConnect with learnable scaling
-                        factors. It took a segmentation model from 591MB down to 34MB, a 17:1 reduction, at a cost
-                        of 1.2% accuracy. I benchmarked it against 3 state-of-the-art quantization methods: LSQ, DoReFa-Net and PACT.
-                    </p>
-                </div>
-            </div>
+    <div class="work-entry">
+      <div class="entry">
+        <div>
+          <div class="e-head"><span class="e-num">03</span><h3>prediction-market-analytics</h3>
+            <span class="e-kind">Data Engineering</span></div>
+          <p class="e-meta">Python · FastAPI · httpx · asyncio · pytest &nbsp;·&nbsp;
+            <a href="https://github.com/Medhaj-ops/prediction-market-analytics">Repository</a></p>
+          <p>A multi-venue prediction market analytics engine. It pulls live quotes from Kalshi and
+            Polymarket, normalises two incompatible formats into a shared quote type, and measures
+            where the venues disagree about the same contract. Read-only by design: no trading, no
+            auth, no database. Around 3,000 lines of Python and 61 tests.</p>
+          <figure><svg viewBox="0 0 580 168" role="img" aria-label="Cross venue divergence on the 2026 US recession contract">
+          <text class="svg-l" x="0" y="14">US recession in 2026 (NBER)</text>
+          <line x1="60" y1="78" x2="540" y2="78" stroke="rgba(236,232,225,.18)"/>
+          <text class="svg-l" x="48" y="96">2.0%</text><text class="svg-l" x="520" y="96">3.0%</text>
+          <line x1="267" y1="62" x2="267" y2="94" stroke="#ECE8E1" stroke-width="1.5"/>
+          <text class="svg-t" x="186" y="56">Polymarket 2.45%</text>
+          <line x1="290" y1="62" x2="290" y2="94" stroke="#ECE8E1" stroke-width="1.5"/>
+          <text class="svg-t" x="300" y="114">Kalshi 2.50%</text>
+          <path d="M267 40 V32 H290 V40" fill="none" stroke="#C8A062" stroke-width="1"/>
+          <text class="svg-a" x="300" y="30">spread +0.05pp</text>
+          <line x1="278.5" y1="70" x2="278.5" y2="86" stroke="#C8A062" stroke-width="3"/>
+          <text class="svg-a" x="222" y="142">consensus 2.475%</text>
+          <text class="svg-l" x="0" y="162">equivalence: approximate &#183; 3 of 4 pairs skipped, quote failed on one venue</text>
+        </svg>
+            <figcaption class="fig-cap"><b>Fig. 3</b> &nbsp;One live pair. The skipped count is part
+              of the reading, not an error state.</figcaption>
+          </figure>
         </div>
-    </section>
+        <p class="note">It will not auto-match contracts by keyword. That produces confident, silent,
+          wrong signals, so every pair is verified by hand against both resolution texts.</p>
+      </div>
+    </div>
 
-    <!-- Publication -->
-    <section class="py-14 px-6 section-fade">
-        <div class="max-w-4xl mx-auto">
-            <div class="mb-10">
-                <p class="text-sm font-medium text-accent mb-2 tracking-wide uppercase">Research</p>
-                <h2 class="text-3xl font-bold">Publication</h2>
-            </div>
+  </div>
+</section>
 
-            <div class="card rounded-2xl p-7">
-                <div class="flex items-start gap-4">
-                    <div class="w-1 h-12 bg-accent rounded-full mt-1 flex-shrink-0"></div>
-                    <div>
-                        <h3 class="font-semibold mb-1">PCOS Diagnosis: Data-Driven Predictions and Workflow Enhancement</h3>
-                        <p class="text-sm text-accent-soft mb-2">S. Rai and M. Dubey</p>
-                        <p class="text-sm text-muted leading-relaxed">
-                            Published in <span class="italic text-gray-300">Operations Research and Data Analytics: Current Trends and Future Perspectives</span>, Springer, 2025.
-                            Presented at ICONIEA, IIT Kharagpur, 2024.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="section" id="history">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">&#167;2</span><h2>Engineering History</h2>
+      <span class="sec-rule"></span></div>
 
-    <!-- Contact -->
-    <section id="contact" class="py-16 px-6 section-fade">
-        <div class="max-w-2xl mx-auto text-center">
-            <p class="text-sm font-medium text-accent mb-2 tracking-wide uppercase">Connect</p>
-            <h2 class="text-3xl font-bold mb-4">Get in touch</h2>
-            <p class="text-muted mb-10 leading-relaxed">
-                Exploring full-time roles in AI engineering, infrastructure, and developer tooling.
-                If you're building something interesting, I'd love to hear about it.
-            </p>
-            <div class="flex justify-center gap-3 flex-wrap">
-                <a href="mailto:dubeymedhaj10@gmail.com" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg btn-primary text-sm font-medium">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                    dubeymedhaj10@gmail.com
-                </a>
-                <a href="https://github.com/Medhaj-ops" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg btn-ghost text-sm font-medium">
-                    GitHub
-                </a>
-                <a href="https://www.linkedin.com/in/medhaj-dubey-272357296/" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg btn-ghost text-sm font-medium">
-                    LinkedIn
-                </a>
-            </div>
-        </div>
-    </section>
+    <div class="log-entry"><div class="log-date">2026.09<span>to present</span></div>
+      <div class="log-body"><h4>Research Intern, remote</h4><p class="log-org">IIT Indore</p>
+        <p>Quantization for I-JEPA models, the self-supervised vision architecture.</p>
+      </div></div>
 
-    <!-- Footer -->
-    <footer class="py-8 px-6 border-t border-border/50">
-        <div class="max-w-5xl mx-auto flex justify-between items-center text-xs text-muted-dim">
-            <span>Medhaj Dubey · 2026</span>
-            <span>Built from scratch</span>
-        </div>
-    </footer>
+    <div class="log-entry"><div class="log-date">2026.01<span>to 2026.07</span></div>
+      <div class="log-body"><h4>Platform Engineering Intern</h4>
+        <p class="log-org">Eli Lilly and Company</p>
+        <p>Built MCP protocol servers in Go that let agents deploy applications and query Kubernetes
+          clusters, with phase gates enforcing correctness, cutting first deployment for a new
+          developer from hours to under five minutes. Designed a multi-agent orchestration system on
+          Google ADK and AWS Bedrock that went to production, and shipped a metrics dashboard
+          deriving 16 health-scored metrics from GitHub data.</p>
+      </div></div>
 
-    <!-- Scroll animation -->
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
+    <div class="log-entry"><div class="log-date">2025.05<span>to 2025.07</span></div>
+      <div class="log-body"><h4>Fintech Intern</h4><p class="log-org">Ethan AI</p>
+        <p>A financial sentiment pipeline over six news sources, scoring sentences with FinBERT to
+          feed mutual fund recommendations. Automated Morningstar factsheet retrieval, replacing a
+          manual process that took analysts more than two hours per fund.</p>
+      </div></div>
 
-        document.querySelectorAll('.section-fade').forEach(el => observer.observe(el));
-    </script>
+    <div class="log-entry"><div class="log-date">2024.09<span>to 2025.03</span></div>
+      <div class="log-body"><h4>Research Intern</h4>
+        <p class="log-org">Samsung R&amp;D Institute Bangalore</p>
+        <p>A model compression pipeline using modified BinaryConnect with learnable scaling factors.</p>
+        <figure><svg viewBox="0 0 540 104" role="img" aria-label="Segmentation model compressed from 591 megabytes to 34 megabytes, drawn to scale">
+          <rect x="0" y="16" width="460" height="22" fill="rgba(236,232,225,.16)"/>
+          <text class="svg-t" x="0" y="10">591 MB</text>
+          <rect x="0" y="58" width="26.5" height="22" fill="#C8A062"/>
+          <text class="svg-t" x="36" y="74">34 MB</text>
+          <text class="svg-a" x="100" y="74">17:1, drawn to scale</text>
+          <text class="svg-l" x="0" y="99">cost: 1.2% accuracy. benchmarked against LSQ, DoReFa-Net, PACT.</text>
+        </svg>
+          <figcaption class="fig-cap"><b>Fig. 4</b> &nbsp;The bars are to true proportion. The small
+            one really is 5.8% of the large one.</figcaption>
+        </figure>
+      </div></div>
+  </div>
+</section>
+
+<section class="section" id="publication">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">&#167;3</span><h2>Publication</h2>
+      <span class="sec-rule"></span></div>
+    <div class="pub">
+      <p>S. Rai and M. Dubey, &#8220;PCOS Diagnosis: Data-Driven Predictions and Workflow
+        Enhancement,&#8221; in <cite>Operations Research and Data Analytics: Current Trends and
+        Future Perspectives</cite>, Springer, 2025. Presented at ICONIEA, IIT Kharagpur, 2024.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">&#167;4</span><h2>Contact</h2>
+      <span class="sec-rule"></span></div>
+    <p style="max-width:34rem">I work on AI infrastructure, systems and developer tooling. If you are building
+      something in that space, I would like to hear about it.</p>
+    <div class="contact-grid">
+      <a href="mailto:dubeymedhaj10@gmail.com">dubeymedhaj10@gmail.com</a>
+      <a href="https://github.com/Medhaj-ops">github.com/Medhaj-ops</a>
+      <a href="https://www.linkedin.com/in/medhaj-dubey-272357296/">LinkedIn</a>
+      <a href="assets/Medhaj_Dubey_CV.pdf">Curriculum vitae (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap colophon">
+  Set in Bricolage Grotesque, Newsreader and JetBrains Mono. Written by hand, no framework.<br>
+  Figures drawn as inline SVG from measured numbers. Last revised November 2026.
+</footer>
 
 </body>
 </html>

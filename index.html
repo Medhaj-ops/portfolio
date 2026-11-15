@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medhaj Dubey — Software Engineer</title>
+    <title>Medhaj Dubey, Software Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -132,8 +132,9 @@
                 <p class="text-xs sm:text-sm font-medium text-accent mb-4 tracking-wide uppercase">Software Engineer</p>
                 <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold name-gradient mb-5 tracking-tight leading-[1.1]">Medhaj Dubey</h1>
                 <p class="text-base sm:text-lg text-muted max-w-xl mx-auto mb-3 leading-relaxed px-2">
-                    Building at the intersection of AI and infrastructure — model compression,
-                    LLM observability, autonomous deployment systems, and databases from scratch.
+                    I build infrastructure that makes system behaviour measurable. Distributed tracing
+                    for LLM agents, a key-value store written and benchmarked from scratch, and model
+                    compression with the accuracy cost stated.
                 </p>
                 <p class="text-xs sm:text-sm text-muted-dim mb-8 px-2">
                     B.Tech CS (Minor: Computational Mathematics) · Manipal Institute of Technology · 2026
@@ -183,9 +184,11 @@
                             </a>
                         </div>
                         <p class="text-sm text-muted leading-relaxed mb-5">
-                            OTel-native observability for multi-agent LLM systems. Auto-instruments OpenAI and LiteLLM
-                            via monkey-patching — zero-code tracing. ClickHouse-backed analytics with behavioral search
-                            and multi-trace comparison. Production Helm chart with autoscaling collector.
+                            OpenTelemetry-native observability for multi-agent LLM systems. It auto-instruments
+                            OpenAI and LiteLLM by monkey-patching them, so you get tracing without touching your
+                            code. Analytics run on ClickHouse, with behavioral search and multi-trace comparison,
+                            and it ships with a production Helm chart and an autoscaling collector.
+                            Published on PyPI: <code class="text-accent-soft whitespace-nowrap">pip install agentlog-ai</code>.
                         </p>
                         <div class="flex flex-wrap gap-1.5">
                             <span class="tag text-xs px-2.5 py-0.5 rounded-md">Python</span>
@@ -208,9 +211,11 @@
                             </a>
                         </div>
                         <p class="text-sm text-muted leading-relaxed mb-5">
-                            Networked in-memory key-value store from scratch in Go. Speaks Redis RESP protocol —
-                            compatible with redis-cli out of the box. Write-ahead log with fsync-per-write,
-                            RWMutex concurrency, dual TTL expiry. 11.8M GET ops/sec, zero dependencies.
+                            A networked in-memory key-value store I wrote from scratch in Go. It speaks the Redis
+                            RESP protocol, so redis-cli works against it out of the box. Write-ahead log with
+                            fsync on every write, RWMutex concurrency, dual TTL expiry, no external dependencies.
+                            Store-level benchmarks on an Apple M4 Pro come in at 11.8M GET ops/sec, 85 ns/op,
+                            1 alloc/op. Those cover in-memory operations only, with no network in the path.
                         </p>
                         <div class="flex flex-wrap gap-1.5">
                             <span class="tag text-xs px-2.5 py-0.5 rounded-md">Go</span>
@@ -225,20 +230,32 @@
                 <div class="card rounded-2xl p-7 group">
                     <div class="flex justify-between items-start mb-4">
                         <div>
-                            <h3 class="text-lg font-semibold mb-1">Multi-Strategy Portfolio Backtester</h3>
-                            <p class="text-xs text-muted-dim uppercase tracking-wider font-medium">Quantitative Finance</p>
+                            <h3 class="text-lg font-semibold mb-1">prediction-market-analytics</h3>
+                            <p class="text-xs text-muted-dim uppercase tracking-wider font-medium">Data Engineering / Probability</p>
                         </div>
+                        <a href="https://github.com/Medhaj-ops/prediction-market-analytics" target="_blank" class="text-muted-dim hover:text-accent transition-colors p-1">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            </a>
                     </div>
                     <p class="text-sm text-muted leading-relaxed mb-5 max-w-3xl">
-                        Backtesting framework integrating 5 forecasting models (N-BEATS, LSTM, GRU, RNN, XGBoost)
-                        with 4 allocation strategies across 27 stocks and 67,500 observations. Walk-forward validation
-                        to eliminate look-ahead bias with automated model selection and strategy switching.
+                        A multi-venue prediction market analytics engine. It pulls live quotes from Kalshi and
+                        Polymarket, normalises both into a shared quote type, and measures where the two venues
+                        disagree about the same contract, reporting signed spread and consensus probability over
+                        hand-verified pairs. Read-only by design, so no trading, no auth, no database. Around
+                        3,000 lines of Python and 61 tests.
+                    </p>
+                    <p class="text-sm text-muted-dim leading-relaxed mb-5 max-w-3xl border-l-2 border-border pl-4">
+                        It deliberately won't auto-match contracts across venues by keyword or date. That approach
+                        produces confident, silent, wrong signals, so every pair is curated by hand and re-verified
+                        against both APIs. When a quote fails on either venue, the pair gets counted and surfaced
+                        rather than quietly dropped.
                     </p>
                     <div class="flex flex-wrap gap-1.5">
                         <span class="tag text-xs px-2.5 py-0.5 rounded-md">Python</span>
-                        <span class="tag text-xs px-2.5 py-0.5 rounded-md">PyTorch</span>
-                        <span class="tag text-xs px-2.5 py-0.5 rounded-md">XGBoost</span>
-                        <span class="tag text-xs px-2.5 py-0.5 rounded-md">Quantitative Finance</span>
+                        <span class="tag text-xs px-2.5 py-0.5 rounded-md">FastAPI</span>
+                        <span class="tag text-xs px-2.5 py-0.5 rounded-md">httpx</span>
+                        <span class="tag text-xs px-2.5 py-0.5 rounded-md">asyncio</span>
+                        <span class="tag text-xs px-2.5 py-0.5 rounded-md">pytest</span>
                     </div>
                 </div>
             </div>
@@ -254,6 +271,21 @@
             </div>
 
             <div class="space-y-4">
+                <!-- IIT Indore -->
+                <div class="card rounded-2xl p-7">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
+                        <div>
+                            <h3 class="text-base font-semibold">Research Intern (Remote)</h3>
+                            <p class="text-accent-soft font-medium text-sm">IIT Indore</p>
+                        </div>
+                        <span class="text-xs text-muted-dim font-medium bg-surface px-2.5 py-1 rounded-md whitespace-nowrap">Sep 2026 to present</span>
+                    </div>
+                    <p class="text-sm text-muted leading-relaxed mt-3">
+                        I'm working on quantization for I-JEPA models, the self-supervised vision architecture,
+                        which carries on the model compression work I started at Samsung. I work remotely with a
+                        faculty supervisor, with weekly reviews.
+                    </p>
+                </div>
                 <!-- Lilly -->
                 <div class="card rounded-2xl p-7">
                     <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
@@ -261,12 +293,13 @@
                             <h3 class="text-base font-semibold">Platform Engineering Intern</h3>
                             <p class="text-accent-soft font-medium text-sm">Eli Lilly and Company</p>
                         </div>
-                        <span class="text-xs text-muted-dim font-medium bg-surface px-2.5 py-1 rounded-md whitespace-nowrap">Jan — Jul 2026</span>
+                        <span class="text-xs text-muted-dim font-medium bg-surface px-2.5 py-1 rounded-md whitespace-nowrap">Jan to Jul 2026</span>
                     </div>
                     <p class="text-sm text-muted leading-relaxed mt-3">
-                        Built MCP protocol servers in Go for autonomous Kubernetes deployment via GitOps.
-                        Designed multi-agent orchestration system (Google ADK, AWS Bedrock) deployed to production.
-                        Shipped engineering metrics dashboard deriving 16 health-scored metrics from GitHub data.
+                        I built MCP protocol servers in Go that let Kubernetes deployments run autonomously through
+                        GitOps, and designed a multi-agent orchestration system on Google ADK and AWS Bedrock that
+                        went to production. I also shipped an engineering metrics dashboard that derives 16
+                        health-scored metrics from GitHub data.
                     </p>
                 </div>
 
@@ -277,11 +310,12 @@
                             <h3 class="text-base font-semibold">Fintech Intern</h3>
                             <p class="text-accent-soft font-medium text-sm">Ethan AI</p>
                         </div>
-                        <span class="text-xs text-muted-dim font-medium bg-surface px-2.5 py-1 rounded-md whitespace-nowrap">May — Jul 2025</span>
+                        <span class="text-xs text-muted-dim font-medium bg-surface px-2.5 py-1 rounded-md whitespace-nowrap">May to Jul 2025</span>
                     </div>
                     <p class="text-sm text-muted leading-relaxed mt-3">
-                        Built financial sentiment pipeline (FinBERT, 6 news sources) for mutual fund recommendations.
-                        Developed automated Morningstar factsheet retrieval replacing a 2+ hour manual process.
+                        I built a financial sentiment pipeline on FinBERT across 6 news sources to support mutual
+                        fund recommendations, and automated Morningstar factsheet retrieval, which replaced a
+                        manual process that took over two hours.
                     </p>
                 </div>
 
@@ -292,12 +326,12 @@
                             <h3 class="text-base font-semibold">Research Intern</h3>
                             <p class="text-accent-soft font-medium text-sm">Samsung R&D Institute Bangalore</p>
                         </div>
-                        <span class="text-xs text-muted-dim font-medium bg-surface px-2.5 py-1 rounded-md whitespace-nowrap">Sep 2024 — Mar 2025</span>
+                        <span class="text-xs text-muted-dim font-medium bg-surface px-2.5 py-1 rounded-md whitespace-nowrap">Sep 2024 to Mar 2025</span>
                     </div>
                     <p class="text-sm text-muted leading-relaxed mt-3">
-                        Built a model compression pipeline using modified BinaryConnect with learnable scaling factors —
-                        reduced a segmentation model from 591MB to 34MB (17:1) with 1.2% accuracy loss.
-                        Benchmarked against 4 SOTA quantization methods.
+                        I built a model compression pipeline using a modified BinaryConnect with learnable scaling
+                        factors. It took a segmentation model from 591MB down to 34MB, a 17:1 reduction, at a cost
+                        of 1.2% accuracy. I benchmarked it against 4 state-of-the-art quantization methods.
                     </p>
                 </div>
             </div>

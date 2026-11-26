@@ -334,6 +334,51 @@ svg{max-width:100%;height:auto;display:block}
       </div>
     </div>
 
+    <div class="work-entry">
+      <div class="entry">
+        <div>
+          <div class="e-head"><span class="e-num">04</span><h3>mcp-safe-inventory-demo</h3>
+            <span class="e-kind">Agent Safety</span></div>
+          <p class="e-meta">Python · MCP SDK · pytest &nbsp;·&nbsp;
+            <a href="https://github.com/Medhaj-ops/mcp-safe-inventory-demo">Repository</a></p>
+          <p>A minimal MCP server showing three patterns for giving agents write access to business
+            state: phase gating, validation before mutation, and structured audit logging. A purchase
+            order cannot be submitted unless a draft for it exists in the same session and the call
+            carries explicit approval. Every check runs against a pure preview, all failures come back
+            at once, and blocked calls are logged alongside successful ones. The domain is a toy on
+            purpose. Around 700 lines and 17 tests, written fresh to isolate the patterns I built into
+            production MCP servers at Eli Lilly.</p>
+          <figure><svg viewBox="0 0 580 150" role="img" aria-label="Purchase order path from draft through the phase gate to the commit, with blocked calls returned with a corrective error and every call written to the audit log">
+          <rect class="box" x="1" y="30" width="118" height="46" rx="2"/>
+          <text class="svg-t" x="14" y="50">draft</text>
+          <text class="svg-l" x="14" y="65">validated, pure</text>
+          <path class="flow" d="M119 53 H167" stroke-width="1"/><path class="flow" d="M161 49 l6 4 -6 4"/>
+          <rect class="box" x="168" y="30" width="118" height="46" rx="2" stroke="rgba(200,160,98,.5)"/>
+          <text class="svg-t" x="181" y="50" fill="#C8A062">phase gate</text>
+          <text class="svg-l" x="181" y="65">draft? approved?</text>
+          <path class="flow" d="M286 53 H334" stroke-width="1"/><path class="flow" d="M328 49 l6 4 -6 4"/>
+          <rect class="box" x="335" y="30" width="110" height="46" rx="2"/>
+          <text class="svg-t" x="348" y="50">commit</text>
+          <text class="svg-l" x="348" y="65">inventory write</text>
+          <path class="flow" d="M445 53 H493" stroke-width="1"/><path class="flow" d="M487 49 l6 4 -6 4"/>
+          <rect class="box" x="494" y="30" width="84" height="46" rx="2"/>
+          <text class="svg-t" x="506" y="50">audit log</text>
+          <text class="svg-l" x="506" y="65">every call</text>
+          <path class="flow" d="M227 76 V98" stroke-dasharray="2 3"/>
+          <text class="svg-a" x="183" y="112">GATE_BLOCKED, with</text>
+          <text class="svg-a" x="183" y="124">the next step to take</text>
+          <text class="svg-l" x="183" y="142">state untouched, still logged</text>
+        </svg>
+            <figcaption class="fig-cap"><b>Fig. 4</b> &nbsp;Submit path. The gate sits outside the
+              domain layer, which never learns that sessions or approval exist.</figcaption>
+          </figure>
+        </div>
+        <p class="note">The gate is a hard error in code, not an instruction in the prompt. A prompt
+          can be ignored or argued away. An error that names the missing step lets the agent
+          correct itself.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -376,7 +421,7 @@ svg{max-width:100%;height:auto;display:block}
           <text class="svg-a" x="100" y="74">17:1, drawn to scale</text>
           <text class="svg-l" x="0" y="99">cost: 1.2% accuracy. benchmarked against LSQ, DoReFa-Net, PACT.</text>
         </svg>
-          <figcaption class="fig-cap"><b>Fig. 4</b> &nbsp;The bars are to true proportion. The small
+          <figcaption class="fig-cap"><b>Fig. 5</b> &nbsp;The bars are to true proportion. The small
             one really is 5.8% of the large one.</figcaption>
         </figure>
       </div></div>

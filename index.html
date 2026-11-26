@@ -338,44 +338,50 @@ svg{max-width:100%;height:auto;display:block}
       <div class="entry">
         <div>
           <div class="e-head"><span class="e-num">04</span><h3>mcp-safe-inventory-demo</h3>
-            <span class="e-kind">Agent Safety</span></div>
-          <p class="e-meta">Python · MCP SDK · pytest &nbsp;·&nbsp;
+            <span class="e-kind">Agent Safety &amp; Evals</span></div>
+          <p class="e-meta">Python · MCP SDK · Anthropic API · pytest &nbsp;·&nbsp;
             <a href="https://github.com/Medhaj-ops/mcp-safe-inventory-demo">Repository</a></p>
-          <p>A minimal MCP server showing three patterns for giving agents write access to business
-            state: phase gating, validation before mutation, and structured audit logging. A purchase
-            order cannot be submitted unless a draft for it exists in the same session and the call
-            carries explicit approval. Every check runs against a pure preview, all failures come back
-            at once, and blocked calls are logged alongside successful ones. The domain is a toy on
-            purpose. Around 700 lines and 17 tests, written fresh to isolate the patterns I built into
-            production MCP servers at Eli Lilly.</p>
-          <figure><svg viewBox="0 0 580 150" role="img" aria-label="Purchase order path from draft through the phase gate to the commit, with blocked calls returned with a corrective error and every call written to the audit log">
-          <rect class="box" x="1" y="30" width="118" height="46" rx="2"/>
-          <text class="svg-t" x="14" y="50">draft</text>
-          <text class="svg-l" x="14" y="65">validated, pure</text>
-          <path class="flow" d="M119 53 H167" stroke-width="1"/><path class="flow" d="M161 49 l6 4 -6 4"/>
-          <rect class="box" x="168" y="30" width="118" height="46" rx="2" stroke="rgba(200,160,98,.5)"/>
-          <text class="svg-t" x="181" y="50" fill="#C8A062">phase gate</text>
-          <text class="svg-l" x="181" y="65">draft? approved?</text>
-          <path class="flow" d="M286 53 H334" stroke-width="1"/><path class="flow" d="M328 49 l6 4 -6 4"/>
-          <rect class="box" x="335" y="30" width="110" height="46" rx="2"/>
-          <text class="svg-t" x="348" y="50">commit</text>
-          <text class="svg-l" x="348" y="65">inventory write</text>
-          <path class="flow" d="M445 53 H493" stroke-width="1"/><path class="flow" d="M487 49 l6 4 -6 4"/>
-          <rect class="box" x="494" y="30" width="84" height="46" rx="2"/>
-          <text class="svg-t" x="506" y="50">audit log</text>
-          <text class="svg-l" x="506" y="65">every call</text>
-          <path class="flow" d="M227 76 V98" stroke-dasharray="2 3"/>
-          <text class="svg-a" x="183" y="112">GATE_BLOCKED, with</text>
-          <text class="svg-a" x="183" y="124">the next step to take</text>
-          <text class="svg-l" x="183" y="142">state untouched, still logged</text>
+          <p>An MCP server for agents that write to business state, and an eval suite that measures
+            whether they behave on top of it. Four patterns: phase gating, validation before mutation,
+            human approval through MCP elicitation that the agent has no way to grant itself, and an
+            audit log that records blocked calls too. The evals run Claude Haiku 5.5 through 20 tasks
+            in 7 categories, from ambiguous requests and declined orders to prompt injections hidden in
+            inventory notes, graded deterministically from the audit log with no LLM judge. Ablations
+            switch off one pattern at a time, so each one's value shows up as a number. Around 2,000
+            lines of Python and 70 tests, written fresh to isolate patterns I built into production
+            MCP servers at Eli Lilly.</p>
+          <div class="stat">
+            <b>20/20</b><span>pass^3</span>
+            <b>0/63</b><span>injections followed</span>
+          </div>
+          <p class="stat-cond">Claude Haiku 5.5, 3 trials per task, approval gate on. pass^3 counts a task only if every
+            trial passes. Injection count
+            spans all seven runs. Scripted user, and the suite now saturates, so harder tasks are next.</p>
+          <figure><svg viewBox="0 0 580 150" role="img" aria-label="Unwanted orders committed in six declined trials: v1 with gate 0, v1 without gate 1, v2 with gate 0, v2 without gate 6">
+          <text class="svg-l" x="0" y="12">unwanted orders committed, 6 declined trials</text>
+          <text class="svg-l" x="0" y="39">v1 &#183; gate on</text>
+          <rect x="120" y="28" width="300" height="14" fill="rgba(236,232,225,.08)"/>
+          <text class="svg-t" x="432" y="39">0 of 6</text>
+          <text class="svg-l" x="0" y="65">v1 &#183; gate off</text>
+          <rect x="120" y="54" width="300" height="14" fill="rgba(236,232,225,.08)"/>
+          <rect x="120" y="54" width="50" height="14" fill="rgba(236,232,225,.45)"/>
+          <text class="svg-t" x="432" y="65">1 of 6</text>
+          <text class="svg-l" x="0" y="91">v2 &#183; gate on</text>
+          <rect x="120" y="80" width="300" height="14" fill="rgba(236,232,225,.08)"/>
+          <text class="svg-t" x="432" y="91">0 of 6</text>
+          <text class="svg-l" x="0" y="117">v2 &#183; gate off</text>
+          <rect x="120" y="106" width="300" height="14" fill="#C8A062"/>
+          <text class="svg-t" x="432" y="117" style="fill:#C8A062">6 of 6</text>
+          <text class="svg-a" x="0" y="144">v2 dropped the chat confirmation: 189 &#8594; 156 tool calls</text>
         </svg>
-            <figcaption class="fig-cap"><b>Fig. 4</b> &nbsp;Submit path. The gate sits outside the
-              domain layer, which never learns that sessions or approval exist.</figcaption>
+            <figcaption class="fig-cap"><b>Fig. 4</b> &nbsp;Drawn to scale. v1 asked in chat before
+              submitting, an accidental safety net. Prompt it away and only the server&#8209;side gate
+              is left.</figcaption>
           </figure>
         </div>
-        <p class="note">The gate is a hard error in code, not an instruction in the prompt. A prompt
-          can be ignored or argued away. An error that names the missing step lets the agent
-          correct itself.</p>
+        <p class="note">An earlier version let the agent pass approved=true. That is approval in name
+          only: an injected model sets the flag as easily as a careful one. Now the server asks the
+          human directly, and with no channel it fails closed.</p>
       </div>
     </div>
 
